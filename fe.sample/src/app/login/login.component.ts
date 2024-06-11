@@ -11,6 +11,8 @@ import { HttpClient } from '@angular/common/http';
 export class LoginComponent {
   username: string | undefined;
   password: string | undefined;
+  // private apiGatewayUrl = 'http://localhost:3000'; 
+  private apiGatewayUrl = 'http://localhost:8080'; 
 
   constructor(private http: HttpClient) {}
 
@@ -21,7 +23,7 @@ export class LoginComponent {
     };
 
     // Replace 'api/login' with your actual login endpoint
-    this.http.post('api/login', credentials)
+    this.http.post(`${this.apiGatewayUrl}/login`,  { credentials })
       .subscribe(response => {
         // Handle successful login response
         console.log('Login successful!', response);
